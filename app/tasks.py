@@ -1,5 +1,5 @@
 from AsyncDjangoApp.celery import app
-from app.models import Tasks
+from .models import Tasks
 from time import sleep
 import random
 
@@ -14,5 +14,6 @@ def process(self, job_name=None):
 
     self.update_state(state='Running', meta={'progress': '66'})
     sleep(random.randint(5, 10))
+
     self.update_state(state='Finishing', meta={'progress': '100'})
     sleep(random.randint(5, 10))
